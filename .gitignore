@@ -1,0 +1,10 @@
+_build/
+*.cmo
+*.o
+*.so
+*.cmx
+*.pyc
+*.native
+.DS_Store
+/setup.log
+/setup.data

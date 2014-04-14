@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: fec22139133beb0d4274be0ff2f7f7f4)
+version = "0.1"
+description = "flajolet"
+requires = "core core_extended threads"
+archive(byte) = "flajolet.cma"
+archive(byte, plugin) = "flajolet.cma"
+archive(native) = "flajolet.cmxa"
+archive(native, plugin) = "flajolet.cmxs"
+exists_if = "flajolet.cma"
+# OASIS_STOP
+

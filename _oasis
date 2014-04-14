@@ -1,0 +1,107 @@
+OASISFormat: 0.4
+Name:        flajolet
+Version:     0.1
+Synopsis:    flajolet
+Authors:     Travis Brady
+License:     MIT
+Plugins:     StdFiles (0.3), DevFiles (0.3), META (0.3)
+XStdFilesAUTHORS:   false
+XStdFilesREADME:    false
+
+Library flajolet
+  Path:             lib
+  FindlibName:      flajolet
+  BuildTools:       ocamlbuild
+  BuildDepends:     core, core_extended, threads
+  CompiledObject:   best
+  Modules:          Recordinality,Hashing,Sbitmap,Hyperloglog,Histogram,Stream_summary,Const
+  CSources:         murmur3.c, murmur3.h, xxhash.h, stubs.c
+  CCOpt:	        -g -std=c99 -D_GNU_SOURCE -O2
+
+Executable test_recordinality
+  Path:             lib_test
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, ounit, core, threads
+  Build$:           flag(tests)
+  CompiledObject:   native
+  MainIs:           test_recordinality.ml
+  Install:          false
+
+Executable test_histogram
+  Path:             lib_test
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, threads, ounit
+  CompiledObject:   native
+  MainIs:           test_histogram.ml
+  Install:          false
+
+Executable test_sbitmap
+  Path:             lib_test
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, core_extended, threads
+  CompiledObject:   native
+  MainIs:           test_sbitmap.ml
+  Install:          false
+
+Executable sbitmap_stdin
+  Path:             lib_test
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, core_extended, threads
+  CompiledObject:   native
+  MainIs:           sbitmap_stdin.ml
+  Install:          false
+
+Executable test_hashing
+  Path:             lib_test
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, core_bench, threads
+  CompiledObject:   native
+  MainIs:           test_hashing.ml
+  Install:          false
+
+Executable test_hyperloglog
+  Path:             lib_test
+  Build$:           flag(tests)
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, ounit, core, threads
+  CompiledObject:   native
+  MainIs:           test_hyperloglog.ml
+  Install:          false
+
+Test test_hll
+  Run$:               flag(tests)
+  Command:            $test_hyperloglog
+  WorkingDirectory:   lib_test
+
+Test test_histogram
+  Run$:               flag(tests)
+  Command:            $test_histogram
+  WorkingDirectory:   lib_test
+
+Test test_sbitmap
+  Run$:             flag(tests)
+  Command:          $test_sbitmap
+  WorkingDirectory: lib_test
+
+Flag examples
+  Default:          False
+  Description:      Build the examples
+  
+Executable topk
+  Path:             examples
+  Build$:           flag(examples)
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, threads
+  CompiledObject:   native
+  MainIs:           topk.ml
+  Install:          false
+
+Executable card
+  Path:             examples
+  Build$:           flag(examples)
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, threads
+  CompiledObject:   native
+  MainIs:           card.ml
+  Install:          false
+
