@@ -86,7 +86,7 @@ Test test_sbitmap
 Flag examples
   Default:          False
   Description:      Build the examples
-  
+
 Executable topk
   Path:             examples
   Build$:           flag(examples)

@@ -3,7 +3,7 @@ open Printf
 type t = {
     m: int;
     q: float;
-    step: int; 
+    step: int;
     sign: int;
     f: (int -> int)
 }

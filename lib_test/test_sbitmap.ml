@@ -15,8 +15,8 @@ let seeds = [
     1308810; -7895483; 7295507; 6399303; 4707399; 5177056; 665728; -7069352;
     8385178; -4559890; -8982494; 1474621; -9110282; -5656604; 753978; -7572080;
     -8890745; 3485684; -9604541; 7118201; 4756137; 6119190; -3953187; -763667;
-    -8117332; -5552040; -5568932; 8044033] 
-    
+    -8117332; -5552040; -5568932; 8044033]
+
 let mean x =
     let len, sum = List.fold x ~init:(0.0, 0.0) ~f:(fun (len, sum) x -> (len +. 1.0, sum +. x)) in
     sum /. len
@@ -42,7 +42,7 @@ let test_synthetic _ =
     assert_bool "SBitmap Mean Error" ((Float.abs mean_err) <= 0.03)
 
 let test_midsummer _ =
-    let fn = "lib_test/midsummer-nights-dream-gutenberg.txt" in
+    let fn = "midsummer-nights-dream-gutenberg.txt" in
     let lines = In_channel.read_lines fn in
 
     let desired_error = 0.015 in
