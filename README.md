@@ -11,6 +11,9 @@ Flajolet is named for Philippe Flajolet inventor of the HyperLogLog.
 Modules:
 =========
 
+*ALPHA* 
+Still very much in development.
+
 Histogram: a streaming histogram, allowing for computation of description stats (mean, variance) and
 quantiles in bounded memory in a streaming fashion.
 
@@ -38,5 +41,11 @@ Another distinct values estimator with scale-invariant errors.  Also uses less m
 Hyperloglog often when cardinality is < 10^6 and the desired error rate is low.
 For more see page 27 of Chen and Cao's paper: 
 http://arxiv.org/pdf/1107.1697v1.pdf
+
+Hashing:
+========
+Hash functions for use in sbitmap and Hyperloglog.  Also potentially more generally useful.
+Examples: murmur 3, xxhash and crapwow.  [test_hashing](https://github.com/travisbrady/flajolet/blob/master/lib_test/test_hashing.ml) is a simple
+benchmark script using core_bench that shows pretty impressive performance for crapwow.
 
 
