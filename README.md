@@ -14,7 +14,9 @@ Modules:
 *ALPHA* 
 Still very much in development.
 
-Histogram: a streaming histogram, allowing for computation of description stats (mean, variance) and
+Histogram:
+==========
+a streaming histogram, allowing for computation of description stats (mean, variance) and
 quantiles in bounded memory in a streaming fashion.
 
 Hyperloglog:
