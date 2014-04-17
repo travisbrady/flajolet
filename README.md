@@ -8,8 +8,9 @@ Flajolet is an OCaml library providing streaming data structures in the vein of 
 
 Flajolet is named for Philippe Flajolet inventor of the HyperLogLog.
 
-Contents:
+Modules:
 =========
+
 Histogram: a streaming histogram, allowing for computation of description stats (mean, variance) and
 quantiles in bounded memory in a streaming fashion.
 
@@ -26,7 +27,7 @@ appearance count is infeasible.
 
 Recordinality
 =============
-Another distinct values estimation method, this time created by a former student of Flajolet's.
+Another distinct values estimation method, this time created by a former student (Jeremie Lumbroso) of Flajolet's.
 The benefit here is that Recordinality allows you to count distinct values and to retrieve a sample
 of previously seen values.
 
