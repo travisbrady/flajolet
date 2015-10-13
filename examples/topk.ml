@@ -1,5 +1,11 @@
+(*
+ * Reads lines on stdin and then prints the top 5 most common strings
+ * to stdout along with their count
+ * Similar to:
+     * cat somefile.txt | sort | uniq -c | sort -nr
+ *)
 open Core.Std
-open Printf
+let printf = Printf.printf
 
 module String_ss = Stream_summary.Ss(String)
 

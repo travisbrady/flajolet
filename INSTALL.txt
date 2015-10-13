@@ -1,5 +1,6 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: a98ae6a81a60fc2bb080466951eafc63) *)
+(* DO NOT EDIT (digest: ddc8e749b11d8b953b968d8dab4d590f) *)
+
 This is the INSTALL file for the flajolet distribution.
 
 This package uses OASIS to generate its build system. See section OASIS for
@@ -9,6 +10,7 @@ Dependencies
 ============
 
 In order to compile this package, you will need:
+
 * ocaml
 * findlib
 * core
