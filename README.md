@@ -21,7 +21,8 @@ quantiles in bounded memory in a streaming fashion.
 ####Hyperloglog:
 Distinct values counting. This example: https://github.com/travisbrady/flajolet/blob/master/examples/card.ml
 provides a very simple demonstration of the idea here.
-Usage:
+
+Toy example usage counting 4 unique strings:
 ```ocaml
 # #require "flajolet";;
 # let hll = Hyperloglog.create 0.03;;
