@@ -6,7 +6,7 @@ Streaming/sketching data structures for OCaml
 Flajolet is an OCaml library providing streaming data structures in the vein of the popular
 [streamlib](https://github.com/addthis/stream-lib) library for Java.
 
-Flajolet is named for [Philippe Flajolet](http://algo.inria.fr/flajolet/) inventor of the HyperLogLog.
+Flajolet is named for INRIA professor [Philippe Flajolet](http://algo.inria.fr/flajolet/), inventor of the HyperLogLog data structure.
 
 Modules:
 =========
@@ -15,8 +15,29 @@ Modules:
 Still very much in development.
 
 ####Histogram:
-a streaming histogram, allowing for computation of descriptive stats (mean, variance) and
+a streaming histogram, allowing for computation of descriptive stats (min, max, mean, variance) and
 quantiles in bounded memory in a streaming fashion.
+
+Have a look at [destats.ml](https://github.com/travisbrady/flajolet/blob/master/examples/destats.ml) for an example of using a Histogram to compute descriptive stats on a column of numbers read of stdin.
+
+Example with some fake data:
+```
+$ cat floats
+0.0
+1.0
+2.0
+3.0
+4.0
+$ cat floats | ./destats.native
+count:       5.00
+mean :       2.00
+std  :       1.41
+min  :       0.00
+25%  :       1.00
+50%  :       2.00
+75%  :       3.00
+max  :       4.00
+```
 
 ####Hyperloglog:
 Distinct values counting. This example: https://github.com/travisbrady/flajolet/blob/master/examples/card.ml
@@ -37,6 +58,8 @@ val hll : Hyperloglog.t = <abstr>
 Top-k queries in bounded memory.  When you've scanning a stream user ids and want to ask
 "who are the top 10 most frequently seen users?" but storing a map from every user id to every
 appearance count is infeasible.
+
+See [topk.ml](https://github.com/travisbrady/flajolet/blob/master/examples/topk.ml) for an example of using a stream summary to calculate the top-k most frequenty itemsin a shell pipeline.
 
 ####Recordinality
 Another distinct values estimation method, this time created by a former student (Jeremie Lumbroso) of Flajolet's.
