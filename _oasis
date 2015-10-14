@@ -105,3 +105,12 @@ Executable card
   MainIs:           card.ml
   Install:          false
 
+Executable destats
+  Path:             examples
+  Build$:           flag(examples)
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, threads
+  CompiledObject:   native
+  MainIs:           destats.ml
+  Install:          false
+

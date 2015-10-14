@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 45fa6bf4080b0ead758bd41723f8bf6d)
+# DO NOT EDIT (digest: 13fab21663b6b30addbf70b0636bbd04)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -79,6 +79,11 @@ true: annot, bin_annot
 "examples/card.native": pkg_core_extended
 "examples/card.native": pkg_threads
 "examples/card.native": use_flajolet
+# Executable destats
+"examples/destats.native": pkg_core
+"examples/destats.native": pkg_core_extended
+"examples/destats.native": pkg_threads
+"examples/destats.native": use_flajolet
 <examples/*.ml{,i,y}>: pkg_core
 <examples/*.ml{,i,y}>: pkg_core_extended
 <examples/*.ml{,i,y}>: pkg_threads

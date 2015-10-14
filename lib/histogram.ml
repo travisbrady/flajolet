@@ -2,6 +2,8 @@ open Core.Std
 
 type t = {
     nbins:  int;
+    min:    float;
+    max:    float;
     bins:   float Float.Map.t;
     total:  float
 }
@@ -9,15 +11,24 @@ type t = {
 let create nbins =
     {
         nbins;
+        min = Float.max_finite_value;
+        max = Float.max_finite_value *. -1.0;
         bins = Float.Map.empty;
         total = 0.0
     }
+
+let count t = t.total
+let min t = t.min
+let max t = t.max
 
 let new_bin t n count =
     let nm = Float.Map.add t.bins ~key:n ~data:count in
     {t with bins = nm; total = t.total +. count}
 
 let offer t n =
+    let _min = Float.min t.min n in
+    let _max = Float.max t.max n in
+    let t = {t with min = _min; max = _max} in
     if Float.Map.length t.bins = 0 then
         new_bin t n 1.0
     else
@@ -112,6 +123,4 @@ let describe t =
     ) in
     let mean = sum /. t.total in
     let variance = sq_sum /. t.total -. mean *. mean in
-    (*{mean; variance; std = (sqrt variance)}*)
     (mean, variance, (sqrt variance))
-
