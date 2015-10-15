@@ -9,7 +9,8 @@ let printf = Printf.printf
 
 let show_result hist _count =
     let _min = Histogram.min hist in
-    let mean, var, std = Histogram.describe hist in
+    let mean = Histogram.mean hist in
+    let std = Histogram.std hist in
     let first_quartile = Histogram.quantile hist 0.25 in
     let median = Histogram.quantile hist 0.5 in
     let third_quartile = Histogram.quantile hist 0.75 in 

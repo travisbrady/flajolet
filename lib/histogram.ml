@@ -1,4 +1,5 @@
 open Core.Std
+let printf = Printf.printf
 
 type t = {
     nbins:  int;
@@ -111,16 +112,21 @@ let mean t =
     ) in
     sum /. t.total
 
-type descriptive_stats = {
-    mean:       float;
-    variance:   float;
-    std:        float
-}
-
-let describe t =
-    let sum,sq_sum = Float.Map.fold t.bins ~init:(0.0, 0.) ~f:(fun ~key ~data (sum,sq_sum) ->
-        (sum +. key *. data, sq_sum +. (key *. data) ** 2.0)
+(*
+ * From
+ * https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Weighted_incremental_algorithm
+ *)
+let weighted_incremental_variance t =
+    let num_weighted_pairs = Float.of_int (Float.Map.length t.bins) in
+    let sumweight, mean, m2 = Float.Map.fold t.bins ~init:(0.0, 0.0, 0.0) ~f:(fun ~key ~data (sumweight, mean, m2) ->
+        let temp = data +. sumweight in
+        let delta = key -. mean in
+        let r = delta *. data /. temp in
+        let mean' = mean +. r in
+        let m2' = m2 +. sumweight *. delta *. r in
+        (temp, mean', m2')
     ) in
-    let mean = sum /. t.total in
-    let variance = sq_sum /. t.total -. mean *. mean in
-    (mean, variance, (sqrt variance))
+    let variance_n = m2 /. sumweight in
+    variance_n *. num_weighted_pairs /. (num_weighted_pairs -.  1.0)
+
+let std t = sqrt (weighted_incremental_variance t)
