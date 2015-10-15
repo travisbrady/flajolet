@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 13fab21663b6b30addbf70b0636bbd04)
+# DO NOT EDIT (digest: 450fa79c43248c9b875d061b50a275c5)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -46,6 +46,11 @@ true: annot, bin_annot
 "lib_test/test_sbitmap.native": pkg_core_extended
 "lib_test/test_sbitmap.native": pkg_threads
 "lib_test/test_sbitmap.native": use_flajolet
+# Executable test_bloom
+"lib_test/test_bloom.native": pkg_core
+"lib_test/test_bloom.native": pkg_core_extended
+"lib_test/test_bloom.native": pkg_threads
+"lib_test/test_bloom.native": use_flajolet
 # Executable sbitmap_stdin
 "lib_test/sbitmap_stdin.native": pkg_core
 "lib_test/sbitmap_stdin.native": pkg_core_extended

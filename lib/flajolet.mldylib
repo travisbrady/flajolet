@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 421514e7ca59ef136ca2c15cc9efe329)
+# DO NOT EDIT (digest: eac84ef177ba60db52455c68263d0d9a)
 Recordinality
 Hashing
 Sbitmap
@@ -7,4 +7,5 @@ Hyperloglog
 Histogram
 Stream_summary
 Const
+Bloom
 # OASIS_STOP

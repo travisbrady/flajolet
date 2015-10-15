@@ -135,3 +135,50 @@ caml_xxh_256(value input) {
     return caml_copy_int64(out[0]);
 }
 
+uint64_t hash_murmur64(const unsigned char *buf, size_t len, uint64_t seed)
+{
+	const uint64_t m = 0xc6a4a7935bd1e995ULL;
+	const int r = 47;
+	const uint64_t *data = (const uint64_t *)buf;
+	const uint64_t *end = data + (len / 8);
+	const unsigned char *data2;
+	uint64_t h = seed ^ (len * m);
+	uint64_t v;
+
+	while (data != end) {
+		v = *data++;
+		v *= m;
+		v ^= v >> r;
+		v *= m;
+		h ^= v;
+		h *= m;
+	}
+
+	data2 = (const unsigned char*)data;
+
+	switch (len & 7) {
+	case 7: h ^= (uint64_t)data2[6] << 48;
+	case 6: h ^= (uint64_t)data2[5] << 40;
+	case 5: h ^= (uint64_t)data2[4] << 32;
+	case 4: h ^= (uint64_t)data2[3] << 24;
+	case 3: h ^= (uint64_t)data2[2] << 16;
+	case 2: h ^= (uint64_t)data2[1] << 8;
+	case 1: h ^= (uint64_t)data2[0];
+		h *= m;
+	}
+ 
+	h ^= h >> r;
+	h *= m;
+	h ^= h >> r;
+
+	return h;
+}
+
+CAMLprim value
+caml_hash_murmur64(value buf, value vseed) {
+    const unsigned char *_buf = (const unsigned char *)String_val(buf);
+    size_t len = (size_t)caml_string_length(buf);
+    uint64_t seed = (uint64_t)Int64_val(vseed);
+    uint64_t res = hash_murmur64(_buf, len, seed);
+    return caml_copy_int64(res);
+}
