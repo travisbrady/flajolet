@@ -80,9 +80,8 @@ Another distinct values estimation method, this time created by a former student
 The benefit here is that Recordinality allows you to count distinct values and to retrieve a sample
 of previously seen values.
 
-####Sbitmap:
-Sel-Learning Bitmaps
-Another distinct values estimator with scale-invariant errors.  Also uses less memory than a 
+####Self-Learning Bitmaps (aka Sbitmap):
+Another distinct values estimator with scale-invariant errors.  More space-efficient than a 
 Hyperloglog often when cardinality is < 10^6 and the desired error rate is low.
 For more see page 27 of Chen and Cao's paper: 
 http://arxiv.org/pdf/1107.1697v1.pdf
