@@ -1,7 +1,7 @@
 flajolet
 ========
 
-Streaming/sketching data structures for OCaml
+Probabilistic data structures for OCaml intended for use in streaming data analysis
 
 Flajolet is an OCaml library providing streaming data structures in the vein of the popular
 [streamlib](https://github.com/addthis/stream-lib) library for Java.
@@ -48,10 +48,24 @@ Toy example usage counting 4 unique strings:
 # #require "flajolet";;
 # let hll = Hyperloglog.create 0.03;;
 val hll : Hyperloglog.t = <abstr>
-# List.iter (fun x -> Hyperloglog.offer hll x) ["hi"; "hello"; "bonjour"; "salut"];;
+# List.iter (fun x -> Hyperloglog.offer hll x) ["hi"; "hello"; "bonjour"; "salut"; "hi"; "hi"; "hi"];;
 - : unit = ()
 # Hyperloglog.card hll;;
 - : float = 4.00391134373
+```
+
+####Bloom Filter
+Supports approximate set membership queries with no false negatives.
+
+Example:
+```ocaml
+(* Create a bloom filter with 10_000 expected items and a 1% desired false positive rate *)
+# let b = Bloom.create_with_estimates 10_000 0.01;;
+# Bloom.add b "hey";;
+# Bloom.test b "hey";;
+- : bool = true
+Bloom.test b "nope";;
+- : bool = false
 ```
 
 ####StreamSummary:
