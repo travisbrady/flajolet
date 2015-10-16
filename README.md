@@ -15,7 +15,7 @@ Modules:
 Still very much in development.
 
 ####Hyperloglog:
-Distinct values counting. This example: https://github.com/travisbrady/flajolet/blob/master/examples/card.ml
+Distinct values counting. This example: [card.ml](https://github.com/travisbrady/flajolet/blob/master/examples/card.ml)
 provides a very simple demonstration of the idea here.
 
 Toy example usage counting 4 unique strings:
