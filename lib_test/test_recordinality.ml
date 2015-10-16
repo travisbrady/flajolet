@@ -36,4 +36,3 @@ let suite = "Test Recordinality" >:::
 
 let _ =
     run_test_tt_main suite
-

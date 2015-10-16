@@ -1,6 +1,6 @@
 open Core.Std
-open Printf
 open OUnit2
+let printf = Printf.printf
 
 let seeds = [
     -1618012; 1202261; 4278475; 2451164; 4459047; 5832028; 9080711; 7535596;
@@ -45,7 +45,7 @@ let test_midsummer _ =
     let fn = "midsummer-nights-dream-gutenberg.txt" in
     let lines = In_channel.read_lines fn in
 
-    let desired_error = 0.015 in
+    let desired_error = 0.01 in
     let errors = List.map seeds ~f:(fun seed ->
         let sb = Sbitmap.create 500_000 desired_error seed in
         List.iter lines ~f:(fun line -> Sbitmap.add sb line);
@@ -53,10 +53,11 @@ let test_midsummer _ =
         let true_set = String.Set.of_list lines in
         let true_card = String.Set.length true_set |> Int.to_float in
         let error = (card /. true_card -. 1.0) in
-        (error ** 2.0)
+        (Float.abs error)
     ) in
-    let mse = mean errors in
-    assert_bool "midsummer_error" (mse <= desired_error)
+    let mae = (mean errors) in
+    let error_error = Float.abs (desired_error -. mae) in
+    assert_bool "midsummer_error" (error_error <= 0.2)
 
 let test_merge _ =
     let sb1 = Sbitmap.create 1_000_000 0.03 42 in

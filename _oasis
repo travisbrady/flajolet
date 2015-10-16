@@ -51,6 +51,14 @@ Executable test_bloom
   MainIs:           test_bloom.ml
   Install:          false
 
+Executable bench_bloom
+  Path:             bench
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, core, core_bench, threads
+  CompiledObject:   native
+  MainIs:           bench_bloom.ml
+  Install:          false
+
 Executable sbitmap_stdin
   Path:             lib_test
   BuildTools:       ocamlbuild
@@ -59,12 +67,12 @@ Executable sbitmap_stdin
   MainIs:           sbitmap_stdin.ml
   Install:          false
 
-Executable test_hashing
-  Path:             lib_test
+Executable bench_hashing
+  Path:             bench
   BuildTools:       ocamlbuild
   BuildDepends:     flajolet, core, core_bench, threads
   CompiledObject:   native
-  MainIs:           test_hashing.ml
+  MainIs:           bench_hashing.ml
   Install:          false
 
 Executable test_hyperloglog

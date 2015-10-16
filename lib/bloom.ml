@@ -69,3 +69,18 @@ let test_and_add t data =
     in
     aux true 0
 
+let union t other =
+    let ret = Bitarray.create t.m in
+    for i = 0 to t.m-1 do
+        let u = (Bitarray.get t.b i) || (Bitarray.get other.b i) in
+        Bitarray.set ret i u
+    done;
+    {t with b = ret}
+
+let intersection t other =
+    let ret = Bitarray.create t.m in
+    for i = 0 to t.m-1 do
+        let u = (Bitarray.get t.b i) && (Bitarray.get other.b i) in
+        Bitarray.set ret i u
+    done;
+    {t with b = ret}
