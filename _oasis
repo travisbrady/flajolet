@@ -3,6 +3,9 @@ Name:        flajolet
 Version:     0.1
 Synopsis:    flajolet
 Authors:     Travis Brady
+Description: Probabilistic data structures for OCaml
+Homepage:    https://github.com/travisbrady/flajolet
+Maintainers: Travis Brady
 License:     MIT
 Plugins:     StdFiles (0.3), DevFiles (0.3), META (0.3)
 XStdFilesAUTHORS:   false

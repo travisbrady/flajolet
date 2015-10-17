@@ -2,7 +2,7 @@ open Core.Std
 open Printf
 open OUnit2
 
-let fn = "lib_test/midsummer-nights-dream-gutenberg.txt"
+let fn = "midsummer-nights-dream-gutenberg.txt"
 
 let test_loop _ =
     let lines = In_channel.read_lines fn

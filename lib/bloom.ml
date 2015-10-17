@@ -57,12 +57,10 @@ let test t data =
 let test_and_add t data =
     let h = base_hashes data in
     let rec aux res i =
-        printf "[test_and_add] %b %d\n" res i;
         if i = t.k then res
         else begin
             let loc = location t h i in
             let res = Bitarray.get t.b loc in
-            printf "[test_and_add] loc=%d res=%b\n" loc res;
             Bitarray.set t.b loc true;
             aux res (i + 1)
         end
