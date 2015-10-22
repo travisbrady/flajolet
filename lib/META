@@ -1,8 +1,8 @@
 # OASIS_START
-# DO NOT EDIT (digest: fec22139133beb0d4274be0ff2f7f7f4)
+# DO NOT EDIT (digest: 68fac4ad087075a6a496a9dbef8e25b6)
 version = "0.1"
-description = "flajolet"
-requires = "core core_extended threads"
+description = "Probabilistic data structures for OCaml"
+requires = "core core_extended farmhash threads"
 archive(byte) = "flajolet.cma"
 archive(byte, plugin) = "flajolet.cma"
 archive(native) = "flajolet.cmxa"

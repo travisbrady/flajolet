@@ -1,13 +1,13 @@
 OASISFormat: 0.4
 Name:        flajolet
 Version:     0.1
-Synopsis:    flajolet
+Synopsis:    Probabilistic data structures for OCaml
 Authors:     Travis Brady
-Description: Probabilistic data structures for OCaml
+Description: Probabilistic data structures for OCaml (HyperLogLog, Bloom filter and more)
 Homepage:    https://github.com/travisbrady/flajolet
 Maintainers: Travis Brady
 License:     MIT
-Plugins:     StdFiles (0.3), DevFiles (0.3), META (0.3)
+Plugins:     StdFiles (0.4), DevFiles (0.4), META (0.4)
 XStdFilesAUTHORS:   false
 XStdFilesREADME:    false
 
@@ -15,9 +15,9 @@ Library flajolet
   Path:             lib
   FindlibName:      flajolet
   BuildTools:       ocamlbuild
-  BuildDepends:     core, core_extended, threads
+  BuildDepends:     core, core_extended, farmhash, threads
   CompiledObject:   best
-  Modules:          Recordinality,Hashing,Sbitmap,Hyperloglog,Histogram,Stream_summary,Const,Bloom
+  Modules:          Recordinality,Hashing,Sbitmap,Hyperloglog,Histogram,Stream_summary,Bloom,Const,Cmsketch
   CSources:         murmur3.c, murmur3.h, xxhash.h, stubs.c
   CCOpt:	        -g -std=c99 -D_GNU_SOURCE -O2
 
@@ -85,6 +85,15 @@ Executable test_hyperloglog
   BuildDepends:     flajolet, ounit, core, threads
   CompiledObject:   native
   MainIs:           test_hyperloglog.ml
+  Install:          false
+
+Executable test_cmsketch
+  Path:             lib_test
+  Build$:           flag(tests)
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, ounit, core, threads
+  CompiledObject:   native
+  MainIs:           test_cmsketch.ml
   Install:          false
 
 Test test_hll

@@ -7,6 +7,7 @@ external hash_crapwow64: string -> int64 -> int64 = "caml_hash_crapwow64"
 external hash_murmur64: string -> int64 -> int64 = "caml_hash_murmur64"
 external xxh_256: string -> int64 = "caml_xxh_256"
 external test_city: string -> int64 = "test_city"
+external hash_fnv32 : string -> int = "caml_hash_fnv32"
 
 open Int64
 

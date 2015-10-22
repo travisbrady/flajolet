@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 8eae38d273482727879e5a7e6c46988f) *)
+(* DO NOT EDIT (digest: 927103a996b82b22eef6837b9986d502) *)
 
 This is the INSTALL file for the flajolet distribution.
 
@@ -16,8 +16,9 @@ In order to compile this package, you will need:
 * core
 * core_extended for library flajolet, executable sbitmap_stdin,
   executable test_bloom, executable test_sbitmap
-* ounit for executable test_histogram, executable test_hyperloglog,
-  executable test_recordinality
+* farmhash for library flajolet
+* ounit for executable test_cmsketch, executable test_histogram,
+  executable test_hyperloglog, executable test_recordinality
 * core_bench for executable bench_bloom, executable bench_hashing
 
 Installing

@@ -182,3 +182,20 @@ caml_hash_murmur64(value buf, value vseed) {
     uint64_t res = hash_murmur64(_buf, len, seed);
     return caml_copy_int64(res);
 }
+
+uint32_t hash_fnv32(const unsigned char *buf, size_t len)
+{
+	uint32_t hash = 2166136261UL;
+	
+	while (len-- > 0) {
+		hash ^= *buf++;
+		hash *= 16777619;
+	}
+
+	return hash;
+}
+
+CAMLprim value
+caml_hash_fnv32(value buf) {
+    return Val_int(hash_fnv32(String_val(buf), caml_string_length(buf)));
+}

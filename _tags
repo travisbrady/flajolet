@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: dad2808b5a0d0b58d1b122b0fdaa83a8)
+# DO NOT EDIT (digest: 5bbbd5dcc2a2c07b8bc8352e5c24e45d)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -22,85 +22,109 @@ true: annot, bin_annot
 <lib/flajolet.{cma,cmxa}>: use_libflajolet_stubs
 <lib/*.ml{,i,y}>: pkg_core
 <lib/*.ml{,i,y}>: pkg_core_extended
+<lib/*.ml{,i,y}>: pkg_farmhash
 <lib/*.ml{,i,y}>: pkg_threads
 "lib/murmur3.c": pkg_core
 "lib/murmur3.c": pkg_core_extended
+"lib/murmur3.c": pkg_farmhash
 "lib/murmur3.c": pkg_threads
 "lib/stubs.c": pkg_core
 "lib/stubs.c": pkg_core_extended
+"lib/stubs.c": pkg_farmhash
 "lib/stubs.c": pkg_threads
 # Executable test_recordinality
 "lib_test/test_recordinality.native": pkg_core
 "lib_test/test_recordinality.native": pkg_core_extended
+"lib_test/test_recordinality.native": pkg_farmhash
 "lib_test/test_recordinality.native": pkg_ounit
 "lib_test/test_recordinality.native": pkg_threads
 "lib_test/test_recordinality.native": use_flajolet
 # Executable test_histogram
 "lib_test/test_histogram.native": pkg_core
 "lib_test/test_histogram.native": pkg_core_extended
+"lib_test/test_histogram.native": pkg_farmhash
 "lib_test/test_histogram.native": pkg_ounit
 "lib_test/test_histogram.native": pkg_threads
 "lib_test/test_histogram.native": use_flajolet
 # Executable test_sbitmap
 "lib_test/test_sbitmap.native": pkg_core
 "lib_test/test_sbitmap.native": pkg_core_extended
+"lib_test/test_sbitmap.native": pkg_farmhash
 "lib_test/test_sbitmap.native": pkg_threads
 "lib_test/test_sbitmap.native": use_flajolet
 # Executable test_bloom
 "lib_test/test_bloom.native": pkg_core
 "lib_test/test_bloom.native": pkg_core_extended
+"lib_test/test_bloom.native": pkg_farmhash
 "lib_test/test_bloom.native": pkg_threads
 "lib_test/test_bloom.native": use_flajolet
 # Executable bench_bloom
 "bench/bench_bloom.native": pkg_core
 "bench/bench_bloom.native": pkg_core_bench
 "bench/bench_bloom.native": pkg_core_extended
+"bench/bench_bloom.native": pkg_farmhash
 "bench/bench_bloom.native": pkg_threads
 "bench/bench_bloom.native": use_flajolet
 # Executable sbitmap_stdin
 "lib_test/sbitmap_stdin.native": pkg_core
 "lib_test/sbitmap_stdin.native": pkg_core_extended
+"lib_test/sbitmap_stdin.native": pkg_farmhash
 "lib_test/sbitmap_stdin.native": pkg_threads
 "lib_test/sbitmap_stdin.native": use_flajolet
 # Executable bench_hashing
 "bench/bench_hashing.native": pkg_core
 "bench/bench_hashing.native": pkg_core_bench
 "bench/bench_hashing.native": pkg_core_extended
+"bench/bench_hashing.native": pkg_farmhash
 "bench/bench_hashing.native": pkg_threads
 "bench/bench_hashing.native": use_flajolet
 <bench/*.ml{,i,y}>: pkg_core
 <bench/*.ml{,i,y}>: pkg_core_bench
 <bench/*.ml{,i,y}>: pkg_core_extended
+<bench/*.ml{,i,y}>: pkg_farmhash
 <bench/*.ml{,i,y}>: pkg_threads
 <bench/*.ml{,i,y}>: use_flajolet
 # Executable test_hyperloglog
 "lib_test/test_hyperloglog.native": pkg_core
 "lib_test/test_hyperloglog.native": pkg_core_extended
+"lib_test/test_hyperloglog.native": pkg_farmhash
 "lib_test/test_hyperloglog.native": pkg_ounit
 "lib_test/test_hyperloglog.native": pkg_threads
 "lib_test/test_hyperloglog.native": use_flajolet
+# Executable test_cmsketch
+"lib_test/test_cmsketch.native": pkg_core
+"lib_test/test_cmsketch.native": pkg_core_extended
+"lib_test/test_cmsketch.native": pkg_farmhash
+"lib_test/test_cmsketch.native": pkg_ounit
+"lib_test/test_cmsketch.native": pkg_threads
+"lib_test/test_cmsketch.native": use_flajolet
 <lib_test/*.ml{,i,y}>: pkg_core
 <lib_test/*.ml{,i,y}>: pkg_core_extended
+<lib_test/*.ml{,i,y}>: pkg_farmhash
 <lib_test/*.ml{,i,y}>: pkg_ounit
 <lib_test/*.ml{,i,y}>: pkg_threads
 <lib_test/*.ml{,i,y}>: use_flajolet
 # Executable topk
 "examples/topk.native": pkg_core
 "examples/topk.native": pkg_core_extended
+"examples/topk.native": pkg_farmhash
 "examples/topk.native": pkg_threads
 "examples/topk.native": use_flajolet
 # Executable card
 "examples/card.native": pkg_core
 "examples/card.native": pkg_core_extended
+"examples/card.native": pkg_farmhash
 "examples/card.native": pkg_threads
 "examples/card.native": use_flajolet
 # Executable destats
 "examples/destats.native": pkg_core
 "examples/destats.native": pkg_core_extended
+"examples/destats.native": pkg_farmhash
 "examples/destats.native": pkg_threads
 "examples/destats.native": use_flajolet
 <examples/*.ml{,i,y}>: pkg_core
 <examples/*.ml{,i,y}>: pkg_core_extended
+<examples/*.ml{,i,y}>: pkg_farmhash
 <examples/*.ml{,i,y}>: pkg_threads
 <examples/*.ml{,i,y}>: use_flajolet
 # OASIS_STOP

@@ -18,4 +18,3 @@ let () =
     List.iter topk ~f:(fun (key, ct) ->
         printf "%s,%d,%d\n" key ct.String_ss.count ct.String_ss.error
     )
-
