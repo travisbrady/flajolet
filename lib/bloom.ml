@@ -18,11 +18,11 @@ let capacity t = t.m
 let num_hash_functions t = t.k
 
 let base_hashes data =
-    Array.map ~f:(fun x -> Hashing.murmurHash3_x86_32 data x) [|0; 1; 2; 3|]
+    Array.map ~f:(fun x -> Farmhash.hash_with_seed data ~seed:x) [|0; 1; 2; 3|]
 
 let location t h i =
     let loc = (h.(i mod 2) + i * h.(2 + (((i + (i mod 2)) mod 4)/2))) mod t.m in
-    loc 
+    abs loc 
 
 let estimate_parameters n p =
     let nf = Float.of_int n in

@@ -17,8 +17,8 @@ Library flajolet
   BuildTools:       ocamlbuild
   BuildDepends:     core, core_extended, farmhash, threads
   CompiledObject:   best
-  Modules:          Recordinality,Hashing,Sbitmap,Hyperloglog,Histogram,Stream_summary,Bloom,Const,Cmsketch
-  CSources:         murmur3.c, murmur3.h, xxhash.h, stubs.c
+  Modules:          Recordinality,Sbitmap,Hyperloglog,Histogram,Stream_summary,Bloom,Const,Cmsketch
+  CSources:         stubs.c
   CCOpt:	        -g -std=c99 -D_GNU_SOURCE -O2
 
 Executable test_recordinality
@@ -68,14 +68,6 @@ Executable sbitmap_stdin
   BuildDepends:     flajolet, core, core_extended, threads
   CompiledObject:   native
   MainIs:           sbitmap_stdin.ml
-  Install:          false
-
-Executable bench_hashing
-  Path:             bench
-  BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, core, core_bench, threads
-  CompiledObject:   native
-  MainIs:           bench_hashing.ml
   Install:          false
 
 Executable test_hyperloglog

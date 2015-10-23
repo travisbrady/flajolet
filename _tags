@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 5bbbd5dcc2a2c07b8bc8352e5c24e45d)
+# DO NOT EDIT (digest: ea221abd214cd7ecaba3989e97d93b4c)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -17,17 +17,12 @@ true: annot, bin_annot
 # Library flajolet
 "lib/flajolet.cmxs": use_flajolet
 <lib/*.ml{,i,y}>: oasis_library_flajolet_ccopt
-"lib/murmur3.c": oasis_library_flajolet_ccopt
 "lib/stubs.c": oasis_library_flajolet_ccopt
 <lib/flajolet.{cma,cmxa}>: use_libflajolet_stubs
 <lib/*.ml{,i,y}>: pkg_core
 <lib/*.ml{,i,y}>: pkg_core_extended
 <lib/*.ml{,i,y}>: pkg_farmhash
 <lib/*.ml{,i,y}>: pkg_threads
-"lib/murmur3.c": pkg_core
-"lib/murmur3.c": pkg_core_extended
-"lib/murmur3.c": pkg_farmhash
-"lib/murmur3.c": pkg_threads
 "lib/stubs.c": pkg_core
 "lib/stubs.c": pkg_core_extended
 "lib/stubs.c": pkg_farmhash
@@ -65,25 +60,18 @@ true: annot, bin_annot
 "bench/bench_bloom.native": pkg_farmhash
 "bench/bench_bloom.native": pkg_threads
 "bench/bench_bloom.native": use_flajolet
-# Executable sbitmap_stdin
-"lib_test/sbitmap_stdin.native": pkg_core
-"lib_test/sbitmap_stdin.native": pkg_core_extended
-"lib_test/sbitmap_stdin.native": pkg_farmhash
-"lib_test/sbitmap_stdin.native": pkg_threads
-"lib_test/sbitmap_stdin.native": use_flajolet
-# Executable bench_hashing
-"bench/bench_hashing.native": pkg_core
-"bench/bench_hashing.native": pkg_core_bench
-"bench/bench_hashing.native": pkg_core_extended
-"bench/bench_hashing.native": pkg_farmhash
-"bench/bench_hashing.native": pkg_threads
-"bench/bench_hashing.native": use_flajolet
 <bench/*.ml{,i,y}>: pkg_core
 <bench/*.ml{,i,y}>: pkg_core_bench
 <bench/*.ml{,i,y}>: pkg_core_extended
 <bench/*.ml{,i,y}>: pkg_farmhash
 <bench/*.ml{,i,y}>: pkg_threads
 <bench/*.ml{,i,y}>: use_flajolet
+# Executable sbitmap_stdin
+"lib_test/sbitmap_stdin.native": pkg_core
+"lib_test/sbitmap_stdin.native": pkg_core_extended
+"lib_test/sbitmap_stdin.native": pkg_farmhash
+"lib_test/sbitmap_stdin.native": pkg_threads
+"lib_test/sbitmap_stdin.native": use_flajolet
 # Executable test_hyperloglog
 "lib_test/test_hyperloglog.native": pkg_core
 "lib_test/test_hyperloglog.native": pkg_core_extended

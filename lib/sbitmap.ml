@@ -21,14 +21,12 @@ let log2 x = (log x) /. (log 2.0)
 let create nmax error seed =
     let error2 = error ** 2.0 in
 
-    (*let mx = (1. +. 2.0 *. (Float.of_int nmax) *. error2) in*)
     let m_num = log(1. +. 2.0 *. (Float.of_int nmax) *. error2) in
 
     let m_denom = log(1.0 +. 2.0 *. error2 *. (1.0 -. error2)**(-1.0)) in
     let m = m_num /. m_denom in
     let c = Int.of_float (log2 m) in
     let r = (1.0 -. 2.0 *. error2 *. (1.0 +. error2) ** (-1.0)) in
-    (*printf "M: %f Md: %f Mn: %f R: %f C: %d\n" m m_denom m_num r c;*)
     {
         nmax;
         error;
@@ -52,7 +50,8 @@ let get_pk t k =
     pk
 
 let add t item =
-    let (h, h2) = Hashing.murmurHash3_x64_128 item t.seed in
+    let s64 = Int64.of_int t.seed in
+    let h, h2 = Farmhash.hash128_with_seed item ~seed:(s64, s64) in
     let j = Int64.shift_right_logical h t.d |> Int64.to_int in
     match j with
     | Some j' ->
@@ -62,7 +61,6 @@ let add t item =
             let plnext = get_pk t (t.l +. 1.0) in
             let mdf = Float.of_int (-t.d) in
             let dude = uf *. 2.0 ** mdf in
-            (*printf "%s H: %Ld U: %Ld PLNEXT: %f Dude: %f L %7.f\n" item h u plnext dude t.l;*)
             if dude < plnext then begin
                 B.set t.v j' true;
                 t.l <- t.l +. 1.0

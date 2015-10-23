@@ -46,8 +46,7 @@ let create error_rate =
     }
 
 let offer t item =
-    (*let x = Hashing.hash_crapwow64 item 42L in*)
-    let (x,_) = Hashing.murmurHash3_x64_128 item 42 in
+    let x = Farmhash.hash64_with_seed item ~seed:42 in
     let j64 = Int64.(bit_and x (t.m64 - 1L)) in
     let j = Int64.to_int j64 |> Option.value ~default:0 in
     let w = Int64.shift_right_logical x t.p |> Int64.to_int |> Option.value ~default:0 in

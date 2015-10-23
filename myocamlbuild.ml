@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 43db6c7583124ea8e8028df4270dcbdd) *)
+(* DO NOT EDIT (digest: e169157963f35072ab4b11e090efb078) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -608,7 +608,7 @@ open Ocamlbuild_plugin;;
 let package_default =
   {
      MyOCamlbuildBase.lib_ocaml = [("flajolet", ["lib"], [])];
-     lib_c = [("flajolet", "lib", ["lib/murmur3.h"; "lib/xxhash.h"])];
+     lib_c = [("flajolet", "lib", [])];
      flags =
        [
           (["oasis_library_flajolet_ccopt"; "compile"],

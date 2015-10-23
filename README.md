@@ -85,10 +85,3 @@ Another distinct values estimator with scale-invariant errors.  More space-effic
 Hyperloglog often when cardinality is < 10^6 and the desired error rate is low.
 For more see page 27 of Chen and Cao's paper: 
 http://arxiv.org/pdf/1107.1697v1.pdf
-
-####Hashing:
-Hash functions for use in sbitmap and Hyperloglog.  Also potentially more generally useful.
-Examples: murmur 3, xxhash and crapwow.  [test_hashing](https://github.com/travisbrady/flajolet/blob/master/lib_test/test_hashing.ml) is a simple
-benchmark script using core_bench that shows pretty impressive performance for crapwow.
-
-

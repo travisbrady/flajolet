@@ -43,7 +43,8 @@ let rincr m k s =
             (m, 0)
 
 let offer t el =
-    let (h, h2) = Hashing.murmurHash3_x64_128 el t.seed in
+    let s64 = Int64.of_int t.seed in
+    let h, h2 = Farmhash.hash128_with_seed el ~seed:(s64, s64) in
     let ms = Int64.Map.length t.k_map in
     let mk = min_key t in
     if h < mk && ms >= t.sample_size then t
