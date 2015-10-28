@@ -7,7 +7,8 @@ type t = {
     error:      float;
     error2:     float;
     m:          float;
-    v:          B.t;
+    (*v:          B.t;*)
+    v:          Bitarray.t;
     mutable l:  float;
     c:          int;
     d:          int;
@@ -32,7 +33,8 @@ let create nmax error seed =
         error;
         error2 = error ** 2.0;
         m;
-        v = B.create (Float.to_int m);
+        (*v = B.create (Float.to_int m);*)
+        v = Bitarray.create (Float.to_int64 m);
         l = 0.0;
         c;
         d = (64 - c);
@@ -53,22 +55,20 @@ let add t item =
     let s64 = Int64.of_int t.seed in
     let h, h2 = Farmhash.hash128_with_seed item ~seed:(s64, s64) in
     let j = Int64.shift_right_logical h t.d |> Int64.to_int in
-    match j with
-    | Some j' ->
-        if not (B.get t.v j') then begin
-            let u = get_rightmost_bits h t.d in
-            let uf = Int64.to_float u in
-            let plnext = get_pk t (t.l +. 1.0) in
-            let mdf = Float.of_int (-t.d) in
-            let dude = uf *. 2.0 ** mdf in
-            if dude < plnext then begin
-                B.set t.v j' true;
-                t.l <- t.l +. 1.0
-            end
-            else ()
+    let j = Int64.shift_right_logical h t.d in
+    if not (Bitarray.get_bit t.v j) then begin
+        let u = get_rightmost_bits h t.d in
+        let uf = Int64.to_float u in
+        let plnext = get_pk t (t.l +. 1.0) in
+        let mdf = Float.of_int (-t.d) in
+        let dude = uf *. 2.0 ** mdf in
+        if dude < plnext then begin
+            Bitarray.set_bit t.v j;
+            t.l <- t.l +. 1.0
         end
         else ()
-    | None -> ()
+    end
+    else ()
 
 let get_q t l pl =
     t.m ** (-1.0) *. (t.m -. l +. 1.0) *. pl
@@ -96,8 +96,13 @@ let merge t1 t2 =
     if t1.m <> t2.m then None
     else
         let mi = Float.to_int t1.m in
+        (*
         let merged = B.create mi in
         let popcount = ref 0 in
+        *)
+        let merged = Bitarray.bitwise_or t1.v t2.v in
+        let popcount = Bitarray.num_bits_set merged in
+        (*
         for i = 0 to (mi - 1) do
             if (B.get t1.v i) || (B.get t2.v i) then begin
                 B.set merged i true;
@@ -105,5 +110,6 @@ let merge t1 t2 =
             end
             else ()
         done;
-        Some ({t1 with v = merged; l = (Float.of_int !popcount)})
+        *)
+        Some ({t1 with v = merged; l = (Float.of_int64 popcount)})
 

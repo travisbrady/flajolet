@@ -1,5 +1,4 @@
 open Core.Std
-module Bitarray = Core_extended.Bitarray
 let printf = Printf.printf
 
 let log2 = log 2.0
@@ -12,7 +11,7 @@ type t = {
 }
 
 let create m k =
-    {m=m; k=k; b=Bitarray.create m}
+    {m=m; k=k; b=Bitarray.create (Int64.of_int m)}
 
 let capacity t = t.m
 let num_hash_functions t = t.k
@@ -38,7 +37,8 @@ let add t data =
     let h = base_hashes data in
     for i = 0 to t.k-1 do
         let loc = location t h i in
-        Bitarray.set t.b loc true
+        (*Bitarray.set t.b loc true*)
+        Bitarray.set_bit t.b (Int64.of_int loc)
     done
 
 let test t data =
@@ -48,7 +48,7 @@ let test t data =
         else if not res then res
         else begin
             let loc = location t h i in
-            let res = Bitarray.get t.b loc in
+            let res = Bitarray.get_bit t.b (Int64.of_int loc) in
             aux res (i + 1)
         end
     in
@@ -59,26 +59,32 @@ let test_and_add t data =
     let rec aux res i =
         if i = t.k then res
         else begin
-            let loc = location t h i in
-            let res = Bitarray.get t.b loc in
-            Bitarray.set t.b loc true;
+            let loc = Int64.of_int (location t h i) in
+            let res = Bitarray.get_bit t.b loc in
+            Bitarray.set_bit t.b loc;
             aux res (i + 1)
         end
     in
     aux true 0
 
 let union t other =
+    (*
     let ret = Bitarray.create t.m in
     for i = 0 to t.m-1 do
         let u = (Bitarray.get t.b i) || (Bitarray.get other.b i) in
         Bitarray.set ret i u
     done;
     {t with b = ret}
+    *)
+    {t with b = (Bitarray.bitwise_or t.b other.b)}
 
 let intersection t other =
+    (*
     let ret = Bitarray.create t.m in
     for i = 0 to t.m-1 do
         let u = (Bitarray.get t.b i) && (Bitarray.get other.b i) in
         Bitarray.set ret i u
     done;
     {t with b = ret}
+    *)
+    {t with b = (Bitarray.bitwise_and t.b other.b)}

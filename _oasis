@@ -15,9 +15,10 @@ Library flajolet
   Path:             lib
   FindlibName:      flajolet
   BuildTools:       ocamlbuild
-  BuildDepends:     core, core_extended, farmhash, threads
+  BuildDepends:     core, core_extended, farmhash, bitarray, threads
   CompiledObject:   best
-  Modules:          Recordinality,Sbitmap,Hyperloglog,Histogram,Stream_summary,Bloom,Const,Cmsketch
+  InternalModules:  Const
+  Modules:          Recordinality,Sbitmap,Hyperloglog,Histogram,Stream_summary,Bloom,Cmsketch
   CSources:         stubs.c
   CCOpt:	        -g -std=c99 -D_GNU_SOURCE -O2
 

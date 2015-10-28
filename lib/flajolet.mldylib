@@ -1,11 +1,11 @@
 # OASIS_START
-# DO NOT EDIT (digest: 8d33c98537f635dccfd1ae58fec30cdf)
+# DO NOT EDIT (digest: 54e826e155ed54fe879f7eabacd0e93c)
 Recordinality
 Sbitmap
 Hyperloglog
 Histogram
 Stream_summary
 Bloom
-Const
 Cmsketch
+Const
 # OASIS_STOP
