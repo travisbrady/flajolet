@@ -8,3 +8,4 @@ PKG core
 PKG core_extended
 PKG ounit
 PKG farmhash
+PKG uint

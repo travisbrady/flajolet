@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: a7be05af53b1fb3e42486b7618c6cf61)
+# DO NOT EDIT (digest: 12d7cf23dc8d083ea975ad0bd45169e9)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -24,11 +24,13 @@ true: annot, bin_annot
 <lib/*.ml{,i,y}>: pkg_core_extended
 <lib/*.ml{,i,y}>: pkg_farmhash
 <lib/*.ml{,i,y}>: pkg_threads
+<lib/*.ml{,i,y}>: pkg_uint
 "lib/stubs.c": pkg_bitarray
 "lib/stubs.c": pkg_core
 "lib/stubs.c": pkg_core_extended
 "lib/stubs.c": pkg_farmhash
 "lib/stubs.c": pkg_threads
+"lib/stubs.c": pkg_uint
 # Executable test_recordinality
 "lib_test/test_recordinality.native": pkg_bitarray
 "lib_test/test_recordinality.native": pkg_core
@@ -36,6 +38,7 @@ true: annot, bin_annot
 "lib_test/test_recordinality.native": pkg_farmhash
 "lib_test/test_recordinality.native": pkg_ounit
 "lib_test/test_recordinality.native": pkg_threads
+"lib_test/test_recordinality.native": pkg_uint
 "lib_test/test_recordinality.native": use_flajolet
 # Executable test_histogram
 "lib_test/test_histogram.native": pkg_bitarray
@@ -44,6 +47,7 @@ true: annot, bin_annot
 "lib_test/test_histogram.native": pkg_farmhash
 "lib_test/test_histogram.native": pkg_ounit
 "lib_test/test_histogram.native": pkg_threads
+"lib_test/test_histogram.native": pkg_uint
 "lib_test/test_histogram.native": use_flajolet
 # Executable test_sbitmap
 "lib_test/test_sbitmap.native": pkg_bitarray
@@ -51,6 +55,7 @@ true: annot, bin_annot
 "lib_test/test_sbitmap.native": pkg_core_extended
 "lib_test/test_sbitmap.native": pkg_farmhash
 "lib_test/test_sbitmap.native": pkg_threads
+"lib_test/test_sbitmap.native": pkg_uint
 "lib_test/test_sbitmap.native": use_flajolet
 # Executable test_bloom
 "lib_test/test_bloom.native": pkg_bitarray
@@ -58,6 +63,7 @@ true: annot, bin_annot
 "lib_test/test_bloom.native": pkg_core_extended
 "lib_test/test_bloom.native": pkg_farmhash
 "lib_test/test_bloom.native": pkg_threads
+"lib_test/test_bloom.native": pkg_uint
 "lib_test/test_bloom.native": use_flajolet
 # Executable bench_bloom
 "bench/bench_bloom.native": pkg_bitarray
@@ -66,6 +72,7 @@ true: annot, bin_annot
 "bench/bench_bloom.native": pkg_core_extended
 "bench/bench_bloom.native": pkg_farmhash
 "bench/bench_bloom.native": pkg_threads
+"bench/bench_bloom.native": pkg_uint
 "bench/bench_bloom.native": use_flajolet
 <bench/*.ml{,i,y}>: pkg_bitarray
 <bench/*.ml{,i,y}>: pkg_core
@@ -73,6 +80,7 @@ true: annot, bin_annot
 <bench/*.ml{,i,y}>: pkg_core_extended
 <bench/*.ml{,i,y}>: pkg_farmhash
 <bench/*.ml{,i,y}>: pkg_threads
+<bench/*.ml{,i,y}>: pkg_uint
 <bench/*.ml{,i,y}>: use_flajolet
 # Executable sbitmap_stdin
 "lib_test/sbitmap_stdin.native": pkg_bitarray
@@ -80,6 +88,7 @@ true: annot, bin_annot
 "lib_test/sbitmap_stdin.native": pkg_core_extended
 "lib_test/sbitmap_stdin.native": pkg_farmhash
 "lib_test/sbitmap_stdin.native": pkg_threads
+"lib_test/sbitmap_stdin.native": pkg_uint
 "lib_test/sbitmap_stdin.native": use_flajolet
 # Executable test_hyperloglog
 "lib_test/test_hyperloglog.native": pkg_bitarray
@@ -88,6 +97,7 @@ true: annot, bin_annot
 "lib_test/test_hyperloglog.native": pkg_farmhash
 "lib_test/test_hyperloglog.native": pkg_ounit
 "lib_test/test_hyperloglog.native": pkg_threads
+"lib_test/test_hyperloglog.native": pkg_uint
 "lib_test/test_hyperloglog.native": use_flajolet
 # Executable test_cmsketch
 "lib_test/test_cmsketch.native": pkg_bitarray
@@ -96,6 +106,7 @@ true: annot, bin_annot
 "lib_test/test_cmsketch.native": pkg_farmhash
 "lib_test/test_cmsketch.native": pkg_ounit
 "lib_test/test_cmsketch.native": pkg_threads
+"lib_test/test_cmsketch.native": pkg_uint
 "lib_test/test_cmsketch.native": use_flajolet
 <lib_test/*.ml{,i,y}>: pkg_bitarray
 <lib_test/*.ml{,i,y}>: pkg_core
@@ -103,6 +114,7 @@ true: annot, bin_annot
 <lib_test/*.ml{,i,y}>: pkg_farmhash
 <lib_test/*.ml{,i,y}>: pkg_ounit
 <lib_test/*.ml{,i,y}>: pkg_threads
+<lib_test/*.ml{,i,y}>: pkg_uint
 <lib_test/*.ml{,i,y}>: use_flajolet
 # Executable topk
 "examples/topk.native": pkg_bitarray
@@ -110,6 +122,7 @@ true: annot, bin_annot
 "examples/topk.native": pkg_core_extended
 "examples/topk.native": pkg_farmhash
 "examples/topk.native": pkg_threads
+"examples/topk.native": pkg_uint
 "examples/topk.native": use_flajolet
 # Executable card
 "examples/card.native": pkg_bitarray
@@ -117,6 +130,7 @@ true: annot, bin_annot
 "examples/card.native": pkg_core_extended
 "examples/card.native": pkg_farmhash
 "examples/card.native": pkg_threads
+"examples/card.native": pkg_uint
 "examples/card.native": use_flajolet
 # Executable destats
 "examples/destats.native": pkg_bitarray
@@ -124,11 +138,13 @@ true: annot, bin_annot
 "examples/destats.native": pkg_core_extended
 "examples/destats.native": pkg_farmhash
 "examples/destats.native": pkg_threads
+"examples/destats.native": pkg_uint
 "examples/destats.native": use_flajolet
 <examples/*.ml{,i,y}>: pkg_bitarray
 <examples/*.ml{,i,y}>: pkg_core
 <examples/*.ml{,i,y}>: pkg_core_extended
 <examples/*.ml{,i,y}>: pkg_farmhash
 <examples/*.ml{,i,y}>: pkg_threads
+<examples/*.ml{,i,y}>: pkg_uint
 <examples/*.ml{,i,y}>: use_flajolet
 # OASIS_STOP
