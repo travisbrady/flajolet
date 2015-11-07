@@ -89,6 +89,15 @@ Executable test_cmsketch
   MainIs:           test_cmsketch.ml
   Install:          false
 
+Executable test_minhash
+  Path:             lib_test
+  Build$:           flag(tests)
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, ounit, core, threads
+  CompiledObject:   native
+  MainIs:           test_minhash.ml
+  Install:          false
+
 Test test_hll
   Run$:               flag(tests)
   Command:            $test_hyperloglog

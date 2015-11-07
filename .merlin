@@ -9,3 +9,4 @@ PKG core_extended
 PKG ounit
 PKG farmhash
 PKG uint
+PKG bitarray

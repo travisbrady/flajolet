@@ -13,4 +13,10 @@ val similarity : t -> t -> float
 (** [similarity mh1 mh2] computes an estimate of the Jaccard coefficient *)
 
 val cardinality : t -> float
-(** [cardinality mh] computes an estimate of the cardinality of the set represented by the minhash [mh] *)
+(** [cardinality mh] computes an estimate of the cardinality of the set 
+ * represented by the minhash [mh] *)
+
+(*
+val odd_sketch : t -> int64 -> Bitarray.t 
+val odd_card : Bitarray.t -> float
+*)

@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 12d7cf23dc8d083ea975ad0bd45169e9)
+# DO NOT EDIT (digest: e7ca24ab7101d3d8487cc852144a69ef)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -108,6 +108,15 @@ true: annot, bin_annot
 "lib_test/test_cmsketch.native": pkg_threads
 "lib_test/test_cmsketch.native": pkg_uint
 "lib_test/test_cmsketch.native": use_flajolet
+# Executable test_minhash
+"lib_test/test_minhash.native": pkg_bitarray
+"lib_test/test_minhash.native": pkg_core
+"lib_test/test_minhash.native": pkg_core_extended
+"lib_test/test_minhash.native": pkg_farmhash
+"lib_test/test_minhash.native": pkg_ounit
+"lib_test/test_minhash.native": pkg_threads
+"lib_test/test_minhash.native": pkg_uint
+"lib_test/test_minhash.native": use_flajolet
 <lib_test/*.ml{,i,y}>: pkg_bitarray
 <lib_test/*.ml{,i,y}>: pkg_core
 <lib_test/*.ml{,i,y}>: pkg_core_extended

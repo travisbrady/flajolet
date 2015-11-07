@@ -21,7 +21,6 @@ let test_add_many _ =
         ()
     done;
     let ret = Cmsketch.count cms "key_0" in
-    printf "RET: %d\n" ret;
     assert_equal ret 1
 
 let test_delete _ =

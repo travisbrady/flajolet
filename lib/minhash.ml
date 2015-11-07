@@ -49,3 +49,23 @@ let cardinality mh =
     ) in
     (*mh.size_float /. sum*)
     (mh.size_float -. 1.0) /. sum
+
+(*
+let odd_sketch mh num_bits =
+    let os = Bitarray.create num_bits in
+    for i = 0 to mh.size-1 do
+        let io = Uint64.to_int64 mh.minima.(i) in
+        let h = Int64.of_int (Int64.hash io) in
+        let h' = Int64.rem h num_bits in
+        Bitarray.toggle_bit os h'
+    done;
+    os
+
+(* Eq 1 Mitzenmacher, Pagh and Pham *)
+let odd_card odd =
+    let n = Int64.to_float (Bitarray.length odd) in
+    let z = Int64.to_float (Bitarray.num_bits_set odd) in
+    let num = log (1.0 -. 2.0 *. z /. n) in
+    let denom = log (1.0 -. 2.0 /. n) in
+    denom /. num
+*)
