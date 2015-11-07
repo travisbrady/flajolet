@@ -43,6 +43,20 @@ Bloom.test b "nope";;
 - : bool = false
 ```
 
+####Count-Min Sketch
+A well-known sketch used for frequency estimation. You can think of it as a hash table for storing
+approximate frequencies where you don't maintain the keys. You can ask "how many times have you
+seen the `blah_blah_blah`?" and the Cmsketch will answer with an estimated count. But it cannot
+provide a list of keys ever seen. Also allows deletion.
+The tests in [test_cmsketch.ml](lib_test/test_cmsketch.ml) are instructive.
+
+####Minhash
+Useful for computing the Jaccard coefficient in bounded space. Invented originall to detect
+near-duplicate webpages and can be applied to all sorts of near-dupicate detection problems
+provided you've got a way to featurize your data.
+Used primarily for set similarity but also supports cardinality estimation.
+See the tests in [test_minhash.ml](lib_test/test_minhash.ml)
+
 ####StreamSummary:
 Top-k queries in bounded memory.  When you've scanning a stream user ids and want to ask
 "who are the top 10 most frequently seen users?" but storing a map from every user id to every
