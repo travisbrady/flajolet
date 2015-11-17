@@ -8,6 +8,16 @@ Flajolet is an OCaml library providing streaming data structures in the vein of 
 
 Flajolet is named for INRIA professor [Philippe Flajolet](http://algo.inria.fr/flajolet/), inventor of the HyperLogLog data structure.
 
+##Installation
+First install dependencies:
+- core_extended: `opam install core_extended`
+- farmhash: https://github.com/ahrefs/ocaml-farmhash
+- bitarray: https://github.com/travisbrady/ocaml-bitarray
+- uint: `opam install uint`
+
+Then:
+`$ make install`
+
 Modules:
 =========
 
@@ -99,3 +109,10 @@ Another distinct values estimator with scale-invariant errors.  More space-effic
 Hyperloglog often when cardinality is < 10^6 and the desired error rate is low.
 For more see page 27 of Chen and Cao's paper: 
 http://arxiv.org/pdf/1107.1697v1.pdf
+
+##Acknowledgements: portions of this code were understood in part by reading code from: 
+- https://github.com/dgryski
+- https://github.com/seiflotfy
+- https://github.com/svpcom/hyperloglog
+
+##License: MIT
