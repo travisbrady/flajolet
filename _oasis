@@ -34,7 +34,7 @@ Executable test_recordinality
 Executable test_histogram
   Path:             lib_test
   BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, core, threads, ounit
+  BuildDepends:     flajolet, core, threads, oUnit
   CompiledObject:   native
   MainIs:           test_histogram.ml
   Install:          false
@@ -42,7 +42,7 @@ Executable test_histogram
 Executable test_sbitmap
   Path:             lib_test
   BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, core, core_extended, threads
+  BuildDepends:     flajolet, core, core_extended, threads, oUnit
   CompiledObject:   native
   MainIs:           test_sbitmap.ml
   Install:          false
@@ -50,7 +50,7 @@ Executable test_sbitmap
 Executable test_bloom
   Path:             lib_test
   BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, core, core_extended, threads
+  BuildDepends:     flajolet, core, core_extended, threads, oUnit
   CompiledObject:   native
   MainIs:           test_bloom.ml
   Install:          false
@@ -75,7 +75,7 @@ Executable test_hyperloglog
   Path:             lib_test
   Build$:           flag(tests)
   BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, ounit, core, threads
+  BuildDepends:     flajolet, oUnit, core, threads
   CompiledObject:   native
   MainIs:           test_hyperloglog.ml
   Install:          false
@@ -84,7 +84,7 @@ Executable test_cmsketch
   Path:             lib_test
   Build$:           flag(tests)
   BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, ounit, core, threads
+  BuildDepends:     flajolet, oUnit, core, threads
   CompiledObject:   native
   MainIs:           test_cmsketch.ml
   Install:          false
@@ -93,7 +93,7 @@ Executable test_minhash
   Path:             lib_test
   Build$:           flag(tests)
   BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, ounit, core, threads
+  BuildDepends:     flajolet, oUnit, core, threads
   CompiledObject:   native
   MainIs:           test_minhash.ml
   Install:          false

@@ -1,5 +1,4 @@
 open Core.Std
-let printf = Printf.printf
 
 type t = {
     nbins:  int;
