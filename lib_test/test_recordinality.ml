@@ -1,7 +1,7 @@
 open Core.Std
-open Printf
 open OUnit2
 
+let printf = Printf.printf
 let fn = "midsummer-nights-dream-gutenberg.txt"
 
 let test_loop _ =

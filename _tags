@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: e9732cfed5b7e6e77b97bccee3471913)
+# DO NOT EDIT (digest: 2da2d9cdd4ac9cf1bb36c4b2115b0ce7)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -36,11 +36,10 @@ true: annot, bin_annot
 "lib_test/test_recordinality.native": pkg_core
 "lib_test/test_recordinality.native": pkg_core_extended
 "lib_test/test_recordinality.native": pkg_farmhash
-"lib_test/test_recordinality.native": pkg_ounit
+"lib_test/test_recordinality.native": pkg_oUnit
 "lib_test/test_recordinality.native": pkg_threads
 "lib_test/test_recordinality.native": pkg_uint
 "lib_test/test_recordinality.native": use_flajolet
-<lib_test/*.ml{,i,y}>: pkg_ounit
 # Executable test_histogram
 "lib_test/test_histogram.native": pkg_bitarray
 "lib_test/test_histogram.native": pkg_core
@@ -120,11 +119,21 @@ true: annot, bin_annot
 "lib_test/test_minhash.native": pkg_threads
 "lib_test/test_minhash.native": pkg_uint
 "lib_test/test_minhash.native": use_flajolet
+<lib_test/*.ml{,i,y}>: pkg_oUnit
+# Executable test_loglogbeta
+"lib_test/test_loglogbeta.native": pkg_alcotest
+"lib_test/test_loglogbeta.native": pkg_bitarray
+"lib_test/test_loglogbeta.native": pkg_core
+"lib_test/test_loglogbeta.native": pkg_core_extended
+"lib_test/test_loglogbeta.native": pkg_farmhash
+"lib_test/test_loglogbeta.native": pkg_threads
+"lib_test/test_loglogbeta.native": pkg_uint
+"lib_test/test_loglogbeta.native": use_flajolet
+<lib_test/*.ml{,i,y}>: pkg_alcotest
 <lib_test/*.ml{,i,y}>: pkg_bitarray
 <lib_test/*.ml{,i,y}>: pkg_core
 <lib_test/*.ml{,i,y}>: pkg_core_extended
 <lib_test/*.ml{,i,y}>: pkg_farmhash
-<lib_test/*.ml{,i,y}>: pkg_oUnit
 <lib_test/*.ml{,i,y}>: pkg_threads
 <lib_test/*.ml{,i,y}>: pkg_uint
 <lib_test/*.ml{,i,y}>: use_flajolet

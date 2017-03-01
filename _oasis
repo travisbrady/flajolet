@@ -18,14 +18,14 @@ Library flajolet
   BuildDepends:     core, core_extended, farmhash, bitarray, threads, uint
   CompiledObject:   best
   InternalModules:  Const
-  Modules:          Recordinality,Sbitmap,Hyperloglog,Histogram,Stream_summary,Bloom,Cmsketch,Minhash
+  Modules:          Recordinality,Sbitmap,Hyperloglog,Histogram,Stream_summary,Bloom,Cmsketch,Minhash, Loglogbeta
   CSources:         stubs.c
   CCOpt:	        -g -std=c99 -D_GNU_SOURCE -O2
 
 Executable test_recordinality
   Path:             lib_test
   BuildTools:       ocamlbuild
-  BuildDepends:     flajolet, ounit, core, threads
+  BuildDepends:     flajolet, oUnit, core, threads
   Build$:           flag(tests)
   CompiledObject:   native
   MainIs:           test_recordinality.ml
@@ -98,6 +98,15 @@ Executable test_minhash
   MainIs:           test_minhash.ml
   Install:          false
 
+Executable test_loglogbeta
+  Path:             lib_test
+  Build$:           flag(tests)
+  BuildTools:       ocamlbuild
+  BuildDepends:     flajolet, uint, alcotest, core, threads
+  CompiledObject:   native
+  MainIs:           test_loglogbeta.ml
+  Install:          false
+
 Test test_hll
   Run$:               flag(tests)
   Command:            $test_hyperloglog
@@ -111,6 +120,11 @@ Test test_histogram
 Test test_sbitmap
   Run$:             flag(tests)
   Command:          $test_sbitmap
+  WorkingDirectory: lib_test
+
+Test test_loglogbeta
+  Run$:             flag(tests)
+  Command:          $test_loglogbeta
   WorkingDirectory: lib_test
 
 Flag examples
