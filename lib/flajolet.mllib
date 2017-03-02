@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 3f00b9d06d4eae1858a7cd5a34d40f41)
+# DO NOT EDIT (digest: 1ffb1109cc233bac44dc5c068a7ae26f)
 Recordinality
 Sbitmap
 Hyperloglog
@@ -8,5 +8,6 @@ Stream_summary
 Bloom
 Cmsketch
 Minhash
+Loglogbeta
 Const
 # OASIS_STOP
