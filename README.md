@@ -1,5 +1,4 @@
-flajolet
-========
+# flajolet
 
 Probabilistic data structures for OCaml intended for use in streaming data analysis
 
@@ -8,24 +7,23 @@ Flajolet is an OCaml library providing streaming data structures in the vein of 
 
 Flajolet is named for INRIA professor [Philippe Flajolet](http://algo.inria.fr/flajolet/), inventor of the HyperLogLog data structure.
 
-##Installation
+## Installation
 First install dependencies:
 - core_extended: `opam install core_extended`
-- farmhash: https://github.com/ahrefs/ocaml-farmhash
+- farmhash: `opam install farmhash`
 - bitarray: https://github.com/travisbrady/ocaml-bitarray
 - uint: `opam install uint`
 
 Then:
 `$ make install`
 
-Modules:
-=========
+## Modules
 
 *ALPHA* 
 Still very much in development.
 
-####Hyperloglog:
-Distinct values counting. This example: [card.ml](https://github.com/travisbrady/flajolet/blob/master/examples/card.ml)
+#### Hyperloglog:
+Distinct values counting. This example: [card.ml](examples/card.ml)
 provides a very simple demonstration of the idea here.
 
 Toy example usage counting 4 unique strings:
@@ -39,7 +37,7 @@ val hll : Hyperloglog.t = <abstr>
 - : float = 4.00391134373
 ```
 
-####Bloom Filter
+#### Bloom Filter
 Supports approximate set membership queries with no false negatives.
 
 Example:
@@ -53,32 +51,32 @@ Bloom.test b "nope";;
 - : bool = false
 ```
 
-####Count-Min Sketch
+#### Count-Min Sketch
 A well-known sketch used for frequency estimation. You can think of it as a hash table for storing
 approximate frequencies where you don't maintain the keys. You can ask "how many times have you
 seen the `blah_blah_blah`?" and the Cmsketch will answer with an estimated count. But it cannot
 provide a list of keys ever seen. Also allows deletion.
 The tests in [test_cmsketch.ml](lib_test/test_cmsketch.ml) are instructive.
 
-####Minhash
+#### Minhash
 Useful for computing the Jaccard coefficient in bounded space. Invented originall to detect
 near-duplicate webpages and can be applied to all sorts of near-dupicate detection problems
 provided you've got a way to featurize your data.
 Used primarily for set similarity but also supports cardinality estimation.
 See the tests in [test_minhash.ml](lib_test/test_minhash.ml)
 
-####StreamSummary:
+#### StreamSummary
 Top-k queries in bounded memory.  When you've scanning a stream user ids and want to ask
 "who are the top 10 most frequently seen users?" but storing a map from every user id to every
 appearance count is infeasible.
 
-See [topk.ml](https://github.com/travisbrady/flajolet/blob/master/examples/topk.ml) for an example of using a stream summary to calculate the top-k most frequenty itemsin a shell pipeline.
+See [topk.ml](examples/topk.ml) for an example of using a stream summary to calculate the top-k most frequenty itemsin a shell pipeline.
 
-####Histogram:
+#### Histogram
 a streaming histogram, allowing for computation of descriptive stats (min, max, mean, variance) and
 quantiles in bounded memory in a streaming fashion.
 
-Have a look at [destats.ml](https://github.com/travisbrady/flajolet/blob/master/examples/destats.ml) for an example of using a Histogram to compute descriptive stats on a column of numbers read of stdin.
+Have a look at [destats.ml](examples/destats.ml) for an example of using a Histogram to compute descriptive stats on a column of numbers read of stdin.
 
 Example with some fake data:
 ```
@@ -99,20 +97,19 @@ min  :       0.00
 max  :       4.00
 ```
 
-####Recordinality
+#### Recordinality
 Another distinct values estimation method, this time created by a former student (Jeremie Lumbroso) of Flajolet's.
 The benefit here is that Recordinality allows you to count distinct values and to retrieve a sample
 of previously seen values.
 
-####Self-Learning Bitmaps (aka Sbitmap):
+#### Self-Learning Bitmaps (aka Sbitmap)
 Another distinct values estimator with scale-invariant errors.  More space-efficient than a 
 Hyperloglog often when cardinality is < 10^6 and the desired error rate is low.
-For more see page 27 of Chen and Cao's paper: 
-http://arxiv.org/pdf/1107.1697v1.pdf
+For more see page 27 of [Chen and Cao's paper](http://arxiv.org/pdf/1107.1697v1.pdf)
 
-##Acknowledgements: portions of this code were understood in part by reading code from: 
-- https://github.com/dgryski
-- https://github.com/seiflotfy
-- https://github.com/svpcom/hyperloglog
+## Acknowledgements: portions of this code were understood in part by reading code from
+- [dgryski](https://github.com/dgryski)
+- [seiflotfy](https://github.com/seiflotfy)
+- [svpcom](https://github.com/svpcom/hyperloglog)
 
-##License: MIT
+## License: MIT
